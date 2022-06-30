@@ -1,0 +1,13 @@
+<h1>당신이 입력한 텍스트는 {{total}}로 구성되어 있습니다.</h1><!--dict 사용-->
+<a href="{% url 'home'%}">다시하기</a>
+<br>
+<h2>입력한 텍스트:</h2>
+<!--입력받은 전체 텍스트-->
+{{full}}
+<h2>단어 카운트:</h2>
+<!--''단어:'단어가 나온 횟수'-->
+<div class="badge badge-primary text-wrap" style="width: 6rem;">
+{% for word,howmany in dictionary %}<!--python문법을 html에서 이용하기 위한 방법-->
+{{word}}:{{howmany}}<!--중괄호 2개!-->
+<br></div>
+{%endfor%}<!--for문 끝났다 표시-->
