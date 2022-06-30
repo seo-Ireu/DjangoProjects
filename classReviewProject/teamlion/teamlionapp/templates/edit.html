@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="div1" >
+<form method="POST" action="{% url 'edit' blog.id %}">
+    {% csrf_token %}
+    과목이름:<br><input type="text" class="text1"cols="25" name="title"><br>
+    수강후기:<br>
+    <textarea class="text1" rows="5" cols="55" name="body"></textarea><br>
+    <br>
+    <input class="btn btn-info" type="submit" value="수정완료">
+</form>
+</div>
+{% endblock %}

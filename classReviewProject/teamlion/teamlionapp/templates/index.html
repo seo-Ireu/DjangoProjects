@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<p></p>
+    <a href="{% url 'new'%}" id="button2" style="color:plum;">추가하기</a><br><br>
+
+    <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Number</th>
+                <th scope="col">제목</th>
+                <th scope="col">수강후기 미리보기</th>
+              </tr>
+            </thead>
+    {% for i in posts %}
+    <tbody>
+            <tr>
+            <th scope="row"><a href="{% url 'detail' i.id %}" style="color:plum; font-size:20px;">{{ i.id }}</a><br><br> </th>
+              <td>    {{i.title}}</td>
+              <td> {{i.sum}}</td>
+            </tr>
+    </tbody>
+    {% endfor %}
+</table>
+    <ul class="pagination justify-content-center">
+        {%if posts.has_previous%}
+        <li><a class="page-link"style="color:plum; font-size:20px;" href="?page=1">First</a></li>
+        <li><a class="page-link"style="color:plum; font-size:20px;"  href="?{{posts.previous_page_number}}" >Previous</a></li>
+        {%endif%}
+            
+        {% for page in posts.paginator.page_range%}
+        {% if page == posts.number %}
+        <li class="page-item "><a class="page-link disabled"style="color:plum; font-size:20px;">{{ page }}</a></li>
+        {% else %} 
+        <li class="page-item"><a class="page-link" href="?page={{ page }}"style="color:plum; font-size:20px;">{{ page }}</a></li>
+        {% endif %}
+        {% endfor %} 
+        {%if posts.has_next%}
+        <li><a  class="page-link"  href="?page={{posts.next_page_number}}" style="color:plum; font-size:20px;">Next</a></li>
+        <li><a class="page-link"  href="?page={{posts.paginator.num_pages}}"style="color:plum; font-size:20px;">Last</a></li>
+        {%endif%}
+    </ul>
+
+
+{% endblock %}
+

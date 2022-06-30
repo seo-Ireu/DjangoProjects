@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% if status %}
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">제목</th>
+            <th scope="col">수강후기 미리보기</th>
+           
+          </tr>
+        </thead>
+    {% for each_book in status %} 
+    <tbody>
+        <tr>
+          <th scope="row"><a href="{% url 'detail' each_book.id %}" style="color:plum; font-size:20px;">{{ each_book.title }}</a><br><br> </th>
+          <td>{{each_book.title}}</td>
+        </tr>
+</tbody>
+    {% endfor %}
+    {% endif %}
+    </table>
+
+{% endblock %}
