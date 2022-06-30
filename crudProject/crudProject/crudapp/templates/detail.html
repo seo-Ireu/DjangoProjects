@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="panel panel-default">
+    <div class="s">
+        <table>
+            <tr style="text-align: center; margin:20px">
+                <td class="naljja">
+                    <h1>{{ blog.date|date:"d" }}<br>
+                        {{ blog.date|date:"D" }}
+                    </h1>
+                </td>
+
+                <td class="nae">                             
+                        <h3>{{blog.title}}</h3>
+                        <h5>{{blog.body}}</h5>
+                </td>
+            </tr>            
+        </table>
+        <br>
+        <p style="float:right">
+
+
+
+            <a href="{% url 'edit' blog.id %}">수정</a>&nbsp;
+            <a href="{% url 'delete' blog.id %}">삭제</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

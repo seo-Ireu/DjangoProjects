@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block content %}
+<style>
+  .s {
+    font-family: 'Do Hyeon', sans-serif;
+  }
+
+  a,
+  #i {
+    color: black;
+  }
+
+  #now {
+    color: gold;
+  }
+
+  .box {
+    border: 1px dashed gray;
+    width: 300px;
+    height: 150px;
+    margin: 20px;
+    text-align: center;
+    vertical-align: center;
+  }
+</style>
+<div class="s">
+  <img src="{% static 'DDW_Lion.png' %}" ,alt="동덕여대" width=225 height="225">
+  {%for i in posts %}
+  <div class="box">
+    <button type="button" class="btn btn-outline-warning"><a href="{% url 'detail' i.id %}">{{i.id}}</a></button>
+    {{i.title}}<br>
+    {{i.body}}<br>
+    {{i.date}}<br>
+    {{i.sum}}-요약
+  </div>
+
+  {%endfor%}
+  <ul class="pagination justify-content-center">
+    {% if posts.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{posts.previous_page_number}}" id="i">Previous</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="?page=1" id="i">First</a>
+    </li>
+    <li><a class="page-link" href="?page={{posts.previous_page_number}}" id="i">{{posts.previous_page_number}}</a></li>
+    {% endif %}
+    <li class="page-item" id="now">
+      <a class="page-link" href="?page={{posts.number}}" id="now">{{posts.number}}</a>
+    </li>
+    {% if posts.has_next%}
+    <li class="page-item">
+      <a class="page-link" href="?page={{posts.next_page_number}}" id="i">{{posts.next_page_number}}</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="?page={{posts.next_page_number}}" id="i">Next</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="?page={{posts.paginator.num_pages}}" id="i">Last</a>
+    </li>
+    {% endif %}
+  </ul>
+
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+            <form method="POST" action="{% url 'create' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="title">title:</label>
+                    <input type="text" class="form-control" name="title">
+                </div>
+                
+                <div class="form-group">
+                    <label for="body">body:</label>
+                    <textarea class="form-control" rows="5" name="body"></textarea>
+                  </div>
+                <br>
+                <a href="{% url 'create' blog.id %}">확인</a>&nbsp;
+       
+            </form>
+        </div>
+ {% endblock %}       
