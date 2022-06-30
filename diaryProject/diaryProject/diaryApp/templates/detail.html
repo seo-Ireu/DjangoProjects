@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card" style="width: 18rem;">
+        <img src="{{d.image.url}}" class="card-img-top">
+        <div class="card-body">
+      <h6 class="card-title" style="color:darkred;text-align:center;">&#128047{{d.title}}&#128047</h6>
+      <h6 style="text-align:center;">기분:{{d.mood}}
+      <p class="card-text"style="text-align:center;">&#128155{{d.body}}</p>
+      {{d.kakao}}
+      {{d.date}}<br><a href="{%url 'edit' d.id%}" style="color:darkorange">수정</a>
+<a href="{%url 'delete' d.id%}" style="color:darkorange">삭제</a>
+    </div>
+  </div>
+<br>
+
+{% endblock %}

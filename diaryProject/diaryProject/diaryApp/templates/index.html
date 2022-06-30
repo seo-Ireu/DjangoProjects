@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<head>
+  <style>
+    .d1{position:absolute;left:38.5%;}
+    </style>
+</head>
+<body>
+<div class="d1">
+    {% for i in posts %}
+  <div class="card" style="width: 18rem;">
+        <img src="{{i.image_thumbnail.url}}">
+        <div class="card-body">
+      <h3 class="card-title" style="color:darkred;text-align:center;">{{i.title}}</h3>
+      <h6 style="text-align:center;">{{i.mood}}
+      <p class="card-text"style="text-align:center;">{{i.sum}}...</p>
+      {{i.date}}<br>
+      <a href="{% url 'detail' i.id %}"style="color:darkorange;">더보기</a>
+    </div>
+  </div>
+  
+  {% endfor %}
+  
+<br>
+<ul class="pagination justify-content-center">
+        {%if posts.has_previous%}
+        <li><a class="page-link"style="color:black; font-size:20px;" href="?page=1">First</a></li>
+        <li><a class="page-link"style="color:black; font-size:20px;"  href="?{{posts.previous_page_number}}" >Previous</a></li>
+        {%endif%}
+            
+        {% for page in posts.paginator.page_range%}
+        {% if page == posts.number %}
+        <li class="page-item "><a class="page-link disabled"style="color:black; font-size:20px;">{{ page }}</a></li>
+        {% else %} 
+        <li class="page-item"><a class="page-link" href="?page={{ page }}"style="color:black; font-size:20px;">{{ page }}</a></li>
+        {% endif %}
+        {% endfor %} 
+        {%if posts.has_next%}
+        <li><a  class="page-link"  href="?page={{posts.next_page_number}}" style="color:black; font-size:20px;">Next</a></li>
+        <li><a class="page-link"  href="?page={{posts.paginator.num_pages}}"style="color:black; font-size:20px;">Last</a></li>
+        {%endif%}
+    </ul>
+    </div>
+{% endblock %}

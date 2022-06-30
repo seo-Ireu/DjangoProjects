@@ -1,0 +1,12 @@
+{% if user.is_authenticated %} # 장고 내장 메소드 (현재 로그인 상태인가)
+
+<a href="{% url 'new' %}">NEW POST</a>
+<a>{{ user.username }}</a> # 현재 로그인된 유저는 템플릿에서 공유 가능
+<a href="{% url 'logout' %}">Logout</a>
+
+{% else %}
+
+<a href="{% url 'signup' %}">SIGN UP</a>
+<a href="{% url 'login' %}">LOGIN</a>
+
+{% endif %}
