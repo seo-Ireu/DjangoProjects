@@ -1,13 +1,63 @@
-<h1>당신이 입력한 텍스트는 {{total}}로 구성되어 있습니다.</h1><!--dict 사용-->
-<a href="{% url 'home'%}">다시하기</a>
-<br>
-<h2>입력한 텍스트:</h2>
-<!--입력받은 전체 텍스트-->
-{{full}}
-<h2>단어 카운트:</h2>
-<!--''단어:'단어가 나온 횟수'-->
-<div class="badge badge-primary text-wrap" style="width: 6rem;">
-{% for word,howmany in dictionary %}<!--python문법을 html에서 이용하기 위한 방법-->
-{{word}}:{{howmany}}<!--중괄호 2개!-->
-<br></div>
-{%endfor%}<!--for문 끝났다 표시-->
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        #s1 {
+            font-family: 'Black Han Sans', sans-serif;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 30px;
+        }
+
+        .content {
+            color: darkgoldenrod;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <span id="s1">
+        <div class="title">
+            <span>당신이 입력한 텍스트는</span>
+            <span class="content">{{total}}</span>
+            <span>로 구성되어 있습니다.</span>
+        </div>
+
+        <!--dict 사용-->
+        <div style="text-align: center;"><a href="{% url 'home'%}">다시하기</a></div>
+
+        <br>
+        <h2>입력한 텍스트:</h2>
+        <div class="content">{{full}}</div>
+        <!--입력받은 전체 텍스트-->
+
+        <h2>단어 카운트:</h2>
+        <!--''단어:'단어가 나온 횟수'-->
+        <div style=" width:50%; margin:auto;">
+            {% for word,howmany in dictionary %}
+            <!--python문법을 html에서 이용하기 위한 방법-->
+            <div class="content">
+                {{word}}:{{howmany}}
+            </div>
+            <!--중괄호 2개!-->
+            <br>
+            {%endfor%}
+        </div>
+
+        <!--for문 끝났다 표시-->
+    </span>
+</body>
