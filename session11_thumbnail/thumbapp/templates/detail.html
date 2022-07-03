@@ -1,0 +1,23 @@
+<head>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<div class=container>
+    <br><br><br>
+    <div class=posts>
+        <h3>Title</h3>
+        <span class=post-title>{{post.title}}</span>    <br><br>
+        
+        <h3>Content</h3>
+        <span class=post-title>{{post.content}}</span>    <br><br>
+
+        <h3>Image</h3>
+        <span class=post-body><img src="{{post.image.url}}"></span>  <br>
+    
+        <br>
+        <a href="{% url 'delete' post.id %}">
+            <img src="https://img.icons8.com/ios/50/000000/delete.png">
+        </a>
+    </div>
+</div>   
