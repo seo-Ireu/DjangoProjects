@@ -1,24 +1,38 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method="POST" action="{%url 'edit' d.id%}">
-    {%csrf_token%}
-    일기 제목:
-    <br>
-    <input type="text" name="title" value="{{d.title}}">
-    <br>
-    일기 내용:
-    <br>
-    <textarea rows="5" cols="23" name="body">{{d.body}}</textarea>
-    <br>
-    <br>기분:<select name="mood">
-            <option value="&#128513">&#128513</option>
-            <option value="&#128522">&#128522</option>
-            <option value="&#128528">&#128528</option>
-            <option value="&#128544">&#128544</option>
-            <option value="&#128557">&#128557</option>
-        </select>
+<style>
+    .cardDiv {
+        width: 500px;
+        padding: 10px;
+        margin: auto;
+    }
+</style>
+<div class="card-group">
 
-    <input class="btn btn-dark aright" type="submit" value="수정">
-</form>
+    <div class="cardDiv">
+
+        <form method="POST" action="{%url 'edit' d.id%}">
+            {%csrf_token%}
+            일기 제목:
+            <br>
+            <input type="text" name="title" cols="25" value="{{d.title}}">
+            <br>
+            일기 내용:
+            <br>
+            <textarea rows="5" cols="55" name="body">{{d.body}}</textarea>
+            <br>
+            <br>기분:<select name="mood">
+                <option value="&#128513">&#128513</option>
+                <option value="&#128522">&#128522</option>
+                <option value="&#128528">&#128528</option>
+                <option value="&#128544">&#128544</option>
+                <option value="&#128557">&#128557</option>
+            </select>
+            <div style="text-align: center;">
+                <input type="submit" value="수정">
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}

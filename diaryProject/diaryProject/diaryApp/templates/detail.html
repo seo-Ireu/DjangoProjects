@@ -1,18 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<div class="card" style="width: 18rem;">
-        <img src="{{d.image.url}}" class="card-img-top">
-        <div class="card-body">
+<style>
+  .cardDiv {
+    width: 500px;
+    padding: 10px;
+    margin: auto;
+  }
+</style>
+<div class="cardDiv">
+  <div class="card">
+    <img src="{{d.image.url}}" class="card-img-top">
+    <div class="card-body">
       <h6 class="card-title" style="color:darkred;text-align:center;">&#128047{{d.title}}&#128047</h6>
-      <h6 style="text-align:center;">기분:{{d.mood}}
-      <p class="card-text"style="text-align:center;">&#128155{{d.body}}</p>
-      {{d.kakao}}
-      {{d.date}}<br><a href="{%url 'edit' d.id%}" style="color:darkorange">수정</a>
-<a href="{%url 'delete' d.id%}" style="color:darkorange">삭제</a>
+      <h6 style="text-align:center;">기분: {{d.mood}}
+        <p class="card-text" style="text-align:center;">{{d.body}}</p>
+        {{d.date}}<br><a href="{%url 'edit' d.id%}">수정</a>
+        <a href="{%url 'delete' d.id%}">삭제</a>
     </div>
   </div>
+</div>
 <br>
 
 {% endblock %}

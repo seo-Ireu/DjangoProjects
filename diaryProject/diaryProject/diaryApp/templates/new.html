@@ -1,22 +1,39 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<form enctype="multipart/form-data" action="{%url 'new'%}" method="POST">
-        {% csrf_token %}
-        &#128214 일기 쓰기<br>
-       <br> ✍제목:<input type="text" class="text1"cols="25" name="title"><br>
-        <br>
-        <textarea class="text1" rows="5" cols="55" name="body"></textarea><br>
-        <textarea class="text2" row="5"cols="5" name="kakao"></textarea><br>
-        <br>&#128155기분:<select name="mood">
-            <option value="&#128513">&#128513</option>
-            <option value="&#128522"selected>&#128522</option>
-            <option value="&#128528">&#128528</option>
-            <option value="&#128544">&#128544</option>
-            <option value="&#128557">&#128557</option>
-        </select><br><br>
-        &#128155사진         
-        <input type="file" name="image" accept="image/*" id="id_image">
-        <input  type="submit" style="border-style: outset;color:darkorange" value="제출">
-    </form>
-    {% endblock %}
+<style>
+    .cardDiv {
+        width: 500px;
+        padding: 10px;
+        margin: auto;
+    }
+</style>
+<div class="card-group">
+
+    <div class="cardDiv">
+        <form enctype="multipart/form-data" action="{%url 'new'%}" method="POST">
+            {% csrf_token %}
+            <br> ✍제목:<input type="text" class="text1" cols="25" name="title"><br>
+            <br>
+            <textarea class="text1" rows="5" cols="55" name="body"></textarea><br>
+            <br>&#128155기분:<select name="mood">
+                <option value="&#128513">&#128513</option>
+                <option value="&#128522" selected>&#128522</option>
+                <option value="&#128528">&#128528</option>
+                <option value="&#128544">&#128544</option>
+                <option value="&#128557">&#128557</option>
+            </select><br><br>
+            &#128155사진
+
+            <input type="file" name="image" accept="image/*" id="id_image">
+            <br>
+            <br>
+            <br>
+            <div style="text-align: center;">
+                <input type="submit" value="제출">
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock %}
